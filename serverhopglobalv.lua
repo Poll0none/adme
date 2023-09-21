@@ -1,10 +1,11 @@
 local ServerHopper = function()
-    _G.serverhopping = true
+    repeat wait(5) until _G.serverhopping == false
     local Gay = HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. game.PlaceId .. '/servers/Public?sortOrder=Asc&limit=100'))
     local Player = Players.LocalPlayer
 
     for i,v in next, Gay.data do
         if v.playing < 2 then
+            _G.serverhopping = true
             TeleportService:TeleportToPlaceInstance(game.PlaceId, v.id, Player)
             break
         end
@@ -12,7 +13,6 @@ local ServerHopper = function()
 end
 
 local CrowdControl = function()
-    repeat wait(5) until _G.serverhopping == false
     ServerHopper()
 end
 
@@ -43,6 +43,5 @@ spawn(function()
     end
 end)
 
-local characterLoad = game.Workspace:WaitForChild(game.Players.LocalPlayer.Name)
-repeat wait() until characterLoad()
+repeat wait() until game:IsLoaded()
     _G.serverhopping = false
