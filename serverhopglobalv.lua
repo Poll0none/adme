@@ -8,7 +8,6 @@ local ServerHopper = function()
     for i,v in next, Gay.data do
         if v.playing < 2 then
             TeleportService:TeleportToPlaceInstance(game.PlaceId, v.id, Player)
-            _G.serverhopping = _G.serverhopping - 1
             break
         end
     end
@@ -17,6 +16,8 @@ end
 local CrowdControl = function()
     if _G.serverhopping < 1 then
         ServerHopper()
+        wait(30)
+        _G.serverhopping = _G.serverhopping - 1
     else
         wait(30)
         CrowdControl()
