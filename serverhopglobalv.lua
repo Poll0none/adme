@@ -1,18 +1,18 @@
 _G.serverhopping = 0
 
 local ServerHopper = function()
+    wait(45)
     _G.serverhopping = _G.serverhopping + 1
     local Gay = HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. game.PlaceId .. '/servers/Public?sortOrder=Asc&limit=100'))
     local Player = Players.LocalPlayer
 
     for i,v in next, Gay.data do
         if v.playing < 2 then
+            _G.serverhopping = _G.serverhopping - 1
             TeleportService:TeleportToPlaceInstance(game.PlaceId, v.id, Player)
             break
         end
     end
-    wait(45)
-    _G.serverhopping = _G.serverhopping - 1
 end
 
 local CrowdControl = function()
