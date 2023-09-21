@@ -1,4 +1,4 @@
-_G.serverhopping = 0
+_G.serverhopping
 
 local ServerHopper = function()
     _G.serverhopping = _G.serverhopping + 1
