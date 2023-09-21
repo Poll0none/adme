@@ -18,7 +18,6 @@ local CrowdControl = function()
     if _G.serverhopping < 1 then
         ServerHopper()
     else
-        wait(60)
         CrowdControl()
     end
 end
