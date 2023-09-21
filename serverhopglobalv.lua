@@ -12,17 +12,12 @@ local ServerHopper = function()
     end
 end
 
-local CrowdControl = function()
-    ServerHopper()
-end
-
-
 spawn(function()
     while wait() do
         wait(90)
         pcall(function()
             
-            CrowdControl()
+            ServerHopper()
             
         end)
         wait(4)
@@ -34,7 +29,7 @@ spawn(function()
             getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
                 if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
                     
-                    CrowdControl()
+                    ServerHopper()
 
                 end
             end)
