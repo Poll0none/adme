@@ -1,3 +1,5 @@
+--TRIED TO MAKE IT READ A VARIABLE ACROSS MULTI INSTANCES, proved to be impossible, have to look into HTTP GET and POST
+
 local ServerHopper = function()
     local Gay = HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. game.PlaceId .. '/servers/Public?sortOrder=Asc&limit=100'))
     local Player = Players.LocalPlayer
