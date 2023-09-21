@@ -26,7 +26,7 @@ end
 
 spawn(function()
     while wait() do
-        wait(60)
+        wait(90)
         pcall(function()
             
             CrowdControl()
