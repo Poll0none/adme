@@ -12,6 +12,7 @@ local ServerHopper = function()
         end
     end
     wait(45)
+    _G.serverhopping = _G.serverhopping - 1
 end
 
 local CrowdControl = function()
