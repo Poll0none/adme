@@ -1,6 +1,6 @@
 spawn(function()
     while wait() do
-        wait(math.random(900,1200))
+        wait(math.random(1200))
         pcall(function()
             local Gay = HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. game.PlaceId .. '/servers/Public?sortOrder=Asc&limit=100'))
             for i,v in next, Gay.data do
