@@ -16,36 +16,38 @@ end
 local CrowdControl = function()
     if _G.serverhopping < 1 then
         ServerHopper()
-        wait(30)
-        _G.serverhopping = _G.serverhopping - 1
     else
         wait(30)
         CrowdControl()
     end
 end
 
-spawn(function()
-    while wait() do
-        wait(90)
-        pcall(function()
-            
-            CrowdControl()
-            
-        end)
-        wait(4)
-    end
-end)
-spawn(function()
-    while wait() do
-        pcall(function()
-            getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-                if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-                    
-                    CrowdControl()
-
-                end
+if _G.serverhopping == 1 then
+    _G.serverhopping = _G.serverhopping - 1
+else
+    spawn(function()
+        while wait() do
+            wait(90)
+            pcall(function()
+                
+                CrowdControl()
+                
             end)
-        end)
-        wait(4)
-    end
-end)
+            wait(4)
+        end
+    end)
+    spawn(function()
+        while wait() do
+            pcall(function()
+                getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+                    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                        
+                        CrowdControl()
+    
+                    end
+                end)
+            end)
+            wait(4)
+        end
+    end)
+end
