@@ -1,14 +1,5 @@
 _G.serverhopping = 0
 
-local CrowdControl = function()
-    if _G.serverhopping <= 1 then
-        ServerHopper()
-    else
-        wait(45)
-        CrowdControl()
-    end
-end
-
 local ServerHopper = function()
     _G.serverhopping = _G.serverhopping + 1
     local Gay = HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. game.PlaceId .. '/servers/Public?sortOrder=Asc&limit=100'))
@@ -24,10 +15,19 @@ local ServerHopper = function()
     _G.serverhopping = _G.serverhopping - 1
 end
 
+local CrowdControl = function()
+    if _G.serverhopping <= 1 then
+        ServerHopper()
+    else
+        wait(60)
+        CrowdControl()
+    end
+end
+
  
 spawn(function()
     while wait() do
-        wait(math.random(1200))
+        wait(60)
         pcall(function()
             
             CrowdControl()
