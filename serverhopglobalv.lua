@@ -1,5 +1,5 @@
 local ServerHopper = function()
-    repeat wait(5) until _G.serverhopping == false
+    repeat wait(45) until _G.serverhopping == false
     local Gay = HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. game.PlaceId .. '/servers/Public?sortOrder=Asc&limit=100'))
     local Player = Players.LocalPlayer
 
