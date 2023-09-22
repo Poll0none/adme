@@ -25,7 +25,11 @@ spawn(function()
     while wait() do
         pcall(function()
             getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-                if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                            
+                --LINE ABOVE WORKS but sometimes doesn´t detect??
+                --if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                            
+                if child.Name == 'ErrorPrompt' then
 
                     -- Create an array of delay values in seconds
                     local delayValues = {1, 10, 20, 30, 40, 50}
