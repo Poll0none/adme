@@ -1,4 +1,4 @@
---Do local ServerHopWait = 1200 before the loadstring
+--Do _G.ServerHopWait = 1200 before the loadstring
 local ServerHopper = function()
     local Players = game:GetService("Players")
     local Player = Players.LocalPlayer
