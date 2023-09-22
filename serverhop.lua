@@ -9,7 +9,7 @@ end
 
 HopWait = _G.ServerHopWait
 HopDelay = _G.ServerHopDelay
-HopCalc = HopWait + HopDelay
+_G.ServerHopCalc = HopWait + HopDelay
 
 local ServerHopper = function()
     local Players = game:GetService("Players")
@@ -27,7 +27,7 @@ local ServerHopper = function()
 end
 spawn(function()
     while wait() do
-        wait(HopCalc)
+        wait(_G.ServerHopCalc)
         pcall(function()
             
             ServerHopper()
