@@ -11,6 +11,10 @@ local HopWait = _G.ServerHopWait
 local HopDelay = _G.ServerHopDelay
 _G.ServerHopCalc = HopWait + HopDelay
 
+print(HopWait)
+print(HopDelay)
+print(_G.ServerHopCalc)
+
 local ServerHopper = function(time)
     wait(time)
     local Players = game:GetService("Players")
