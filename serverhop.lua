@@ -25,7 +25,7 @@ local ServerHopper = function()
 end
 spawn(function()
     while wait() do
-        wait(_G.ServerHopWait)
+        wait(_G.ServerHopCalc)
         pcall(function()
             
             ServerHopper()
@@ -52,7 +52,7 @@ spawn(function()
                     local selectedDelay = delayValues[randomIndex]
                     
                     -- Wait for the selected delay
-                    wait(selectedDelay)
+                    wait(_G.serverHopDelay)
                     
                     -- Now you've waited for a random delay based on the values in the array
                     ServerHopper()
