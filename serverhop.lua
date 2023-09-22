@@ -3,6 +3,7 @@
 local ServerHopper = function(time)
     local TimeToHop = _G.ServerHopDelay + time
     wait(TimeToHop)
+    print("Server hopping in: " .. TimeToHop)
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local TeleportService = game:GetService("TeleportService")
