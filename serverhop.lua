@@ -13,10 +13,9 @@ local ServerHopper = function()
     end
 end
 
---[[ THIS AUTO SERVER HOPS, set wait() on line 16 to desired seconds
 spawn(function()
     while wait() do
-        wait(1200)
+        wait(90)
         pcall(function()
             
             ServerHopper()
@@ -25,7 +24,7 @@ spawn(function()
         wait(4)
     end
 end)
-]]--
+
 spawn(function()
     while wait() do
         pcall(function()
