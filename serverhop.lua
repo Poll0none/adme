@@ -1,19 +1,19 @@
 --Do _G.ServerHopWait = 1200 before the loadstring
-if _G.ServerHopWait == nil then
+if ServerHopWait == nil then
     _G.ServerHopWait = 1200
 end
 
-if _G.ServerHopDelay == nil then
+if ServerHopDelay == nil then
     _G.serverHopDelay = 30
 end
 
-local HopWait = _G.ServerHopWait
-local HopDelay = _G.ServerHopDelay
-_G.ServerHopCalc = HopWait + HopDelay
+local HopWait = ServerHopWait
+local HopDelay = ServerHopDelay
+ServerHopCalc = HopWait + HopDelay
 
 print(HopWait)
 print(HopDelay)
-print(_G.ServerHopCalc)
+print(ServerHopCalc)
 
 local ServerHopper = function(time)
     wait(time)
@@ -35,7 +35,7 @@ spawn(function()
         wait()
         pcall(function()
             
-            ServerHopper(_G.ServerHopCalc)
+            ServerHopper(ServerHopCalc)
             
         end)
         wait(4)
@@ -59,7 +59,7 @@ spawn(function()
                     local selectedDelay = delayValues[randomIndex]
                     
                     -- Wait for the selected delay
-                    wait(_G.serverHopDelay)
+                    wait(serverHopDelay)
                     
                     -- Now you've waited for a random delay based on the values in the array
                     ServerHopper()
