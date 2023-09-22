@@ -12,10 +12,10 @@ local ServerHopper = function()
         end
     end
 end
-
+--[[ Lets you serverhop by a give interval set in wait(1200) where 1200 are the seconds to wait before changing servers
 spawn(function()
     while wait() do
-        wait(90)
+        wait(1200)
         pcall(function()
             
             ServerHopper()
@@ -24,7 +24,7 @@ spawn(function()
         wait(4)
     end
 end)
-
+]]--
 spawn(function()
     while wait() do
         pcall(function()
