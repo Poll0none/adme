@@ -7,8 +7,8 @@ if _G.ServerHopDelay == nil then
     _G.serverHopDelay = 30
 end
 
-HopWait = _G.ServerHopWait
-HopDelay = _G.ServerHopDelay
+local HopWait = _G.ServerHopWait
+local HopDelay = _G.ServerHopDelay
 _G.ServerHopCalc = HopWait + HopDelay
 
 local ServerHopper = function()
