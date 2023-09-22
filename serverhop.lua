@@ -1,6 +1,6 @@
 local ServerHopperWait = 20
 local ServerHopperDelay = getgenv().serverhopdelay
-local ServerHopperCalc = ServerHopperWait + ServerHopperDelay
+getgenv().ServerHopperCalc = ServerHopperWait + ServerHopperDelay
 
 local ServerHopper = function(time)
     wait(time)
