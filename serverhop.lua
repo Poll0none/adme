@@ -1,5 +1,6 @@
-local ServerHopperWait = 120
+local ServerHopperWait = 20
 local ServerHopperDelay = 30
+local ServerHopperCalc = ServerHopperWait + ServerHopperDelay
 
 local ServerHopper = function(time)
     wait(time)
@@ -21,7 +22,7 @@ spawn(function()
         wait()
         pcall(function()
             
-            ServerHopper(ServerHopperWait)
+            ServerHopper(ServerHopperCalc)
             
         end)
         wait(4)
