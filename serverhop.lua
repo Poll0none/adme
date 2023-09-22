@@ -1,7 +1,7 @@
 --TRIED TO MAKE IT READ A VARIABLE ACROSS MULTI INSTANCES, proved to be impossible, have to look into HTTP GET and POST
-
+print(ServerHopDelay)
 local ServerHopper = function(time)
-    local TimeToHop = _G.ServerHopDelay + time
+    local TimeToHop = ServerHopDelay + time
     wait(TimeToHop)
     print("Server hopping in: " .. TimeToHop)
     local HttpService = game:GetService("HttpService")
