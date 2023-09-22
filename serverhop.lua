@@ -15,7 +15,7 @@ local ServerHopper = function()
 end
 spawn(function()
     while wait() do
-        wait(ServerHopWait)
+        wait(_G.ServerHopWait)
         pcall(function()
             
             ServerHopper()
