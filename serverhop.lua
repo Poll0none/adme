@@ -4,7 +4,7 @@ if _G.ServerHopWait == nil then
 end
 
 if _G.ServerHopDelay == nil then
-    _G.serverHopDelay = 30
+    _G.serverHopDelay = 20
 end
 
 local HopWait = _G.ServerHopWait
