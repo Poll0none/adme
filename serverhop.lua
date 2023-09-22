@@ -1,7 +1,7 @@
 local ServerHopper = function()
+    local Players = game:GetService("Players")
     local Player = Players.LocalPlayer
     local HttpService = game:GetService("HttpService")
-    local Players = game:GetService("Players")
     local TeleportService = game:GetService("TeleportService")
     local Gay = HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. game.PlaceId .. '/servers/Public?sortOrder=Asc&limit=100'))
 
