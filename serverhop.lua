@@ -1,3 +1,4 @@
+--Do local ServerHopWait = 1200 before the loadstring
 local ServerHopper = function()
     local Players = game:GetService("Players")
     local Player = Players.LocalPlayer
@@ -12,10 +13,9 @@ local ServerHopper = function()
         end
     end
 end
---[[ Lets you serverhop by a give interval set in wait(1200) where 1200 are the seconds to wait before changing servers
 spawn(function()
     while wait() do
-        wait(1200)
+        wait(ServerHopWait)
         pcall(function()
             
             ServerHopper()
@@ -24,7 +24,6 @@ spawn(function()
         wait(4)
     end
 end)
-]]--
 spawn(function()
     while wait() do
         pcall(function()
@@ -36,7 +35,7 @@ spawn(function()
                 if child.Name == 'ErrorPrompt' then
 
                     -- Create an array of delay values in seconds
-                    local delayValues = {1, 10, 20, 30, 40, 50}
+                    local delayValues = {10, 20, 30, 40, 50, 60, 70}
                     
                     -- Select a random delay value from the array
                     local randomIndex = math.random(1, #delayValues)
