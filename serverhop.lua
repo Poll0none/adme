@@ -3,6 +3,12 @@ if _G.ServerHopWait == nil then
     _G.ServerHopWait = 1200
 end
 
+if _G.ServerHopDelay == nil then
+    _G.serverHopDelay = 30
+end
+
+_G.ServerHopCalc = _G.ServerHopWait + _G.serverHopDelay
+
 local ServerHopper = function()
     local Players = game:GetService("Players")
     local Player = Players.LocalPlayer
