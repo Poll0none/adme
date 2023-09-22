@@ -1,4 +1,4 @@
-local ServerHopperWait = 20
+local ServerHopperWait = 900
 local ServerHopperDelay = getgenv().serverhopdelay
 getgenv().ServerHopperCalc = ServerHopperWait + ServerHopperDelay
 
