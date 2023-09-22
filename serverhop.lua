@@ -1,7 +1,8 @@
 --TRIED TO MAKE IT READ A VARIABLE ACROSS MULTI INSTANCES, proved to be impossible, have to look into HTTP GET and POST
 
 local ServerHopper = function(time)
-    wait(time)
+    local TimeToHop = _G.ServerHopDelay + time
+    wait(TimeToHop)
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local TeleportService = game:GetService("TeleportService")
