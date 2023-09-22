@@ -1,15 +1,15 @@
 --Do _G.ServerHopWait = 1200 before the loadstring
-if ServerHopWait == nil then
+if _G.ServerHopWait == nil then
     _G.ServerHopWait = 1200
 end
 
-if ServerHopDelay == nil then
+if _G.ServerHopDelay == nil then
     _G.serverHopDelay = 30
 end
 
-local HopWait = ServerHopWait
-local HopDelay = ServerHopDelay
-ServerHopCalc = HopWait + HopDelay
+local HopWait = _G.ServerHopWait
+local HopDelay = _G.ServerHopDelay
+local ServerHopCalc = HopWait + HopDelay
 
 print(HopWait)
 print(HopDelay)
