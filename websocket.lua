@@ -4,7 +4,7 @@ websocket.__index = websocket
 function websocket.new(url)
     local self = {}
     setmetatable(self, websocket)
-    self.obj = websocket.connect(url)
+    self.obj = fluxus.websocket.connect(url)
     self.triggers = {}
     self.events = {}
 
