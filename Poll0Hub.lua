@@ -313,6 +313,7 @@ if game.PlaceId == 920587237 then
     }
     
     local Buypets = {
+        "random_pets_sept_2023_eel",
         "sky_ux_2023_grinmoire",
         "chiprac_2023_chipmunk",
         "chiprac_2023_raccoon"
