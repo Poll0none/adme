@@ -2156,6 +2156,8 @@ if characterLoad and ToggleAutoFarm == true then
     farmPetToggle:Set(true)
     wait(0.5)
     farmBabyToggle:Set(true)
+    wait(0.5)
+    halloweenMiniGame:Set(true)
 end
 
 
