@@ -1805,20 +1805,33 @@ local autoGrowPots = autoFarmTab:CreateToggle({
                     if not Tea then
                         return
                     end
-                    wait(5)
+        
+                    wait(2)
+        
                     local Pets = require(ReplicatedStorage.ClientModules.Core.ClientData).get_data()[Player.Name].inventory.pets or {}
-                    for i,v in next, Pets do
-                        if v["properties"]["age"] ~= 6 and v.kind ~= "practice_dog" then
-                            PetID = v.unique
+                    for i, v in pairs(Pets) do
+                        local age = v["properties"]["age"]
+                        local kind = v.kind
+        
+                        -- Check if the pet is not a "practice dog" and its age is not 6
+                        if kind ~= "practice_dog" and age ~= 6 then
+                            local PetID = v.unique
                             ReplicatedStorage.API["ToolAPI/Unequip"]:InvokeServer(PetID)
                             ReplicatedStorage.API["ToolAPI/Equip"]:InvokeServer(PetID)
+        
+                            -- Only use the age potion if the pet is not already at age 6
+                            if age < 6 then
+                                ReplicatedStorage:FindFirstChild("PetObjectAPI/CreatePetObject", true):InvokeServer("__Enum_PetObjectCreatorType_2", {["unique_id"] = Tea})
+                                ReplicatedStorage:FindFirstChild("PetAPI/ConsumeFoodItem", true):FireServer(Tea)
+                            end
+        
+                            wait(2)
                         end
                     end
-                    ReplicatedStorage:FindFirstChild("PetObjectAPI/CreatePetObject",true):InvokeServer("__Enum_PetObjectCreatorType_2", {["unique_id"] = Tea})
-                    ReplicatedStorage:FindFirstChild("PetAPI/ConsumeFoodItem",true):FireServer(Tea)
                 end)
             end
         end)
+        
     end,
 })
 
