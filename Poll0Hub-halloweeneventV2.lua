@@ -1,3 +1,6 @@
+
+--HALLOWEEN V2
+
 repeat wait() until game:IsLoaded()
 
 if game.PlaceId == 920587237 then
@@ -1643,55 +1646,61 @@ local farmPetToggle = autoFarmTab:CreateToggle({
 })
 
 
-function assetsCheckGuiVisibility(Gui, action)
-    local guiElement = Gui
-    print("assetsCheckGuiVisibility is alive!")
-    local startLoop = true
-    while startLoop == true do
-        if miniGames == true then
-            -- Check if the GUI element is visible
-            local isVisible = guiElement.Visible
+local GoToMiniGame = autoFarmTab:CreateToggle({
+    Name = "Halloween Mini-Game",
+    CurrentValue = false,
+    Flag = "MiniGame", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(State)
+        spawn_cframe = CFrame.new(9999.80469, 1991.7373, 9914.625, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        GoToStore('TileSkipMinigameLobby', spawn_cframe)
+    end,
+})  
 
-            if isVisible then
-                print("The GUI element is on screen and visible!")
-                --TP TO MINIGAME
-                if action == "MiniGame starts" then
-                    getgenv().ToggleAutoFarm = false
-                    spawn_cframe = CFrame.new(9999.80469, 1991.7373, 9914.625, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-                    GoToStore('TileSkipMinigameLobby', spawn_cframe)
-                    wait(70)
-                end
-                if action == "MiniGame ends" then
-                    local Button = Player.PlayerGui.MinigameRewardsApp.Body.Button
-                    local events = { "MouseButton1Click", "MouseButton1Down", "Activated" }
-                    for i, v in next, events do firesignal(Button[v]) end
-                    GoToHome()
-                    wait(5)
-                    getgenv().ToggleAutoFarm = true
-                    startLoop = false
-                end
-            else
-                getgenv().FoundGuiElement = false
-                print("The GUI element is off screen or not visible.")
-
-                return getgenv().FoundGuiElement
-            end
-
-            -- Adjust the delay as needed (e.g., 1 second)
-            wait(1)
-        end
-    end
-end
 local halloweenMiniGame = autoFarmTab:CreateToggle({
     Name = "Halloween Mini-Game",
     CurrentValue = false,
     Flag = "MiniGame", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
     Callback = function(State)
-        getgenv().miniGames = true
+        getgenv().miniGames = State
+
+        local function assetsCheckGuiVisibility(Gui, action)
+            local guiElement = Gui
+            print("assetsCheckGuiVisibility is alive!")
+        
+            if miniGames == true then
+                -- Check if the GUI element is visible
+                local isVisible = guiElement.Visible
+        
+                if isVisible then
+                    print("The GUI element is on screen and visible!")
+        
+                    -- Perform actions based on the action parameter
+                    if action == "MiniGame starts" then
+                        getgenv().ToggleAutoFarm = false
+                        spawn_cframe = CFrame.new(9999.80469, 1991.7373, 9914.625, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+                        GoToStore('TileSkipMinigameLobby', spawn_cframe)
+                        wait(70)
+                        ReplicatedStorage.API["MinigameAPI/MessageServer"]:FireServer("TileSkipMinigameJoinZone","reached_goal")
+                    elseif action == "MiniGame ends" then
+                        local Button = Player.PlayerGui.MinigameRewardsApp.Body.Button
+                        local events = { "MouseButton1Click", "MouseButton1Down", "Activated" }
+                        for i, v in ipairs(events) do
+                            firesignal(Button[v])
+                        end
+                        GoToHome()
+                        wait(5)
+                        getgenv().ToggleAutoFarm = true
+                    end
+                else
+                    print("The GUI element is off screen or not visible.")
+                end
+            end
+        end
+
         while miniGames do
             wait(5)
-            assetsCheckGuiVisibility(Player.PlayerGui.DialogApp.Dialog, "MiniGame starts")
-            ReplicatedStorage.API["MinigameAPI/MessageServer"]:FireServer("TileSkipMinigameJoinZone","reached_goal")
+            assetsCheckGuiVisibility(Player.PlayerGui.DialogApp.Dialog, "MiniGame starts") 
+            wait(5)
             assetsCheckGuiVisibility(Player.PlayerGui.MinigameRewardsApp.Body, "MiniGame ends")
         end
     end,
